@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'selfie_ocr_mtpl'
-  s.version          = '0.0.38'
+  s.version          = '0.0.1'
   s.summary          = 'A new Flutter plugin which detect liveness and capture the selfie'
   s.description      = <<-DESC
 A new Flutter plugin which detect liveness and capture the selfie
@@ -18,6 +18,7 @@ A new Flutter plugin which detect liveness and capture the selfie
 
   s.ios.dependency 'GoogleMobileVision/FaceDetector'
   s.ios.dependency 'GoogleMobileVision/MVDataOutput'
+  s.ios.dependency 'GoogleMobileVision/TextDetector'
 
   s.ios.deployment_target = '11.1'
   s.static_framework = true

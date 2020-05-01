@@ -151,12 +151,11 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     func saveImage(image: UIImage) -> (Bool, String) {
         self.clearTempFolder()
         var rotatedimage = image.rotate(radians: .pi/2)
-        guard let data = rotatedimage.jpegData(compressionQuality: 1) ?? rotatedimage.pngData() else {
+        
+//        let data = UIImageJPEGRepresentation(rotatedimage, 1)
+        guard let data = UIImageJPEGRepresentation(rotatedimage, 1) ?? UIImagePNGRepresentation(rotatedimage) else {
             return (false, "")
         }
-//        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
-//            return (false, "")
-//        }
 
         guard let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else {
             return (false, "")
@@ -166,6 +165,8 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             let fullPath = "\(directory)/fileName.jpeg"
             try data.write(to: URL.init(fileURLWithPath: fullPath))
             self.state = 0
+            print("")
+            print(fullPath)
             return (true, fullPath)
             
 //            try data.write(to: directory.appendingPathComponent("fileName.png")!)

@@ -66,7 +66,7 @@ public class FlutterTestSelfiecapturePlugin implements MethodCallHandler {
             delegate.detectLivelinesss(call, result);
         } else if (call.method.equalsIgnoreCase("ocrFromDocImage")) {
             this.result = result;
-            extractDataFromImage(call.argument("imagePath").toString(),
+                extractDataFromImage(call.argument("imagePath").toString(),
                 call.argument("destFaceImagePath").toString(),
                 Integer.parseInt(call.argument("xOffset").toString()),
                 Integer.parseInt(call.argument("yOffset").toString())
