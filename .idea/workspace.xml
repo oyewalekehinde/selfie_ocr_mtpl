@@ -12,15 +12,7 @@
     <list default="true" id="870d7674-bd3b-4e53-b15c-604e73e44d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/Exif.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/Exif.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FaceTrackerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FaceTrackerActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FlutterTestSelfiecapturePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FlutterTestSelfiecapturePlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/SelfieDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/SelfieDelegate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/ui/camera/CameraSourcePreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/ui/camera/CameraSourcePreview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_test_selfiecapture.iml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_test_selfiecapture.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,6 +70,14 @@
       <option name="presentableId" value="Default" />
       <updated>1571984548574</updated>
     </task>
+    <task id="LOCAL-00001" summary="- Log removed&#10;- Uploaded 0.0.5 to pub.dev">
+      <created>1588335271960</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588335271961</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -92,5 +92,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- Log removed&#10;- Uploaded 0.0.5 to pub.dev" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Log removed&#10;- Uploaded 0.0.5 to pub.dev" />
   </component>
 </project>

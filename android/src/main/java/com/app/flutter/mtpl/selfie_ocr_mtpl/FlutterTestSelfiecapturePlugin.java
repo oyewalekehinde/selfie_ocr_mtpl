@@ -109,36 +109,43 @@ public class FlutterTestSelfiecapturePlugin implements MethodCallHandler {
 
             if(faces!=null && faces.size()!=0)
             {
-                int xValue = (int) faces.get(0).getPosition().x - xOffset;
-                if(xValue<0){
-                    xValue = 0;
-                }
-                int yValue = (int) faces.get(0).getPosition().y - xOffset;
-                if(yValue<0){
-                    yValue = 0;
-                }
-                int width = (int) faces.get(0).getWidth() + yOffset;
-                int height = (int) faces.get(0).getHeight() + yOffset;
-
-                Bitmap faceBitmap = Bitmap.createBitmap(bitmap,xValue,yValue,width,height);
-
-                File f = new File(destFaceImagePath);
-                try{
-                    if(f.exists()){
-                        f.createNewFile();
+                if(faces.valueAt(0)!=null){
+                    int xValue = (int) faces.valueAt(0).getPosition().x - xOffset;
+                    if(xValue<0){
+                        xValue = 0;
                     }
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    faceBitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-                    byte[] bitmapdata = bos.toByteArray();
+                    int yValue = (int) faces.valueAt(0).getPosition().y - xOffset;
+                    if(yValue<0){
+                        yValue = 0;
+                    }
+                    int width = (int) faces.valueAt(0).getWidth() + yOffset;
+                    int height = (int) faces.valueAt(0).getHeight() + yOffset;
 
-                    FileOutputStream fos = new FileOutputStream(f);
-                    fos.write(bitmapdata);
-                    fos.flush();
-                    fos.close();
-                    faceImagePath = f.getAbsolutePath();
-                }catch (IOException e){
-                    e.getMessage();
+                    Bitmap faceBitmap = Bitmap.createBitmap(bitmap,xValue,yValue,width,height);
+
+                    File f = new File(destFaceImagePath);
+                    try{
+                        if(f.exists()){
+                            f.createNewFile();
+                        }
+                        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                        faceBitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+                        byte[] bitmapdata = bos.toByteArray();
+
+                        FileOutputStream fos = new FileOutputStream(f);
+                        fos.write(bitmapdata);
+                        fos.flush();
+                        fos.close();
+                        faceImagePath = f.getAbsolutePath();
+                    }catch (IOException e){
+                        e.getMessage();
+                        result.error("1010","Exception",null);
+                    }
+
+                }else{
+                    result.error("1010","Exception",null);
                 }
+
             }
             faceDetector.release();
         }
