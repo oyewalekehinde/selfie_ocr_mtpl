@@ -10,34 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="870d7674-bd3b-4e53-b15c-604e73e44d97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/Exif.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/Exif.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FaceTrackerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FaceTrackerActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FlutterTestSelfiecapturePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FlutterTestSelfiecapturePlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/res/layout-land/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/res/layout-land/main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/res/layout-v21/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/res/layout-v21/main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/res/layout/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/res/layout/main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/SelfieDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/SelfieDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/ui/camera/CameraSourcePreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/ui/camera/CameraSourcePreview.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/example/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner/AppDelegate.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_test_selfiecapture.iml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_test_selfiecapture.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/FlutterTestSelfiecapturePlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/FlutterTestSelfiecapturePlugin.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/MainLive.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/MainLive.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/SwiftFlutterTestSelfiecapturePlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/SwiftFlutterTestSelfiecapturePlugin.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/flutter_test_selfiecapture.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ios/flutter_test_selfiecapture.podspec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/selfie_ocr_mtpl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/selfie_ocr_mtpl.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/flutter_test_selfiecapture_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/flutter_test_selfiecapture_test.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +85,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -32,7 +32,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
@@ -269,7 +268,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
      * sending the request.
      */
     private void requestCameraPermission() {
-        Log.w(TAG, "Camera permission is not granted. Requesting permission");
 
         final String[] permissions = new String[]{Manifest.permission.CAMERA};
 
@@ -323,7 +321,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             // isOperational() can be used to check if the required native library is currently
             // available.  The detector will automatically become operational once the library
             // download completes on device.
-            Log.w(TAG, "Face detector dependencies are not yet available.");
             // Toast.makeText(FaceTrackerActivity.this, "CreateCameraSource", Toast.LENGTH_SHORT).show();
         }
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -392,20 +389,16 @@ public final class FaceTrackerActivity extends AppCompatActivity {
  /*   @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode != RC_HANDLE_CAMERA_PERM) {
-            Log.d(TAG, "Got unexpected permission result: " + requestCode);
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
             return;
         }
 
         if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "Camera permission granted - initialize the camera source");
             // we have permission, so create the camerasource
             createCameraSource();
             return;
         }
 
-        Log.e(TAG, "Permission not granted: results len = " + grantResults.length +
-                " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
 
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -445,7 +438,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
                 //  Toast.makeText(this, "Camera Source not null", Toast.LENGTH_SHORT).show();
                 mPreview.start(mCameraSource, mGraphicOverlay);
             } catch (IOException e) {
-                Log.e(TAG, "Unable to start camera source.", e);
                 mCameraSource.release();
                 mCameraSource = null;
             }
@@ -454,7 +446,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
     public void setImageViewPicture(Bitmap bmpPicture) {
         File f1 = new File(persistImage(bmpPicture).getPath());
-        Log.e("Path",f1.toString());
         Intent intent = new Intent();
         intent.putExtra("filePath",f1.toString());
         setResult(Activity.RESULT_OK,intent);
@@ -480,7 +471,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             os.close();
             return mFileTemp;
         } catch (Exception e) {
-            Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
         }
         return null;
     }
@@ -535,7 +525,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
                     /**
                      * Eye blink start
                      * */
-                    Log.e("inCircle", inCircle + "");
                     if (inCircle) {
                         txtBlinkEye.setVisibility(View.VISIBLE);
                         if (detectionResults.getDetectedItems() != null &&
@@ -543,15 +532,12 @@ public final class FaceTrackerActivity extends AppCompatActivity {
                             for (int i = 0; i < detectionResults.getDetectedItems().size(); i++) {
                                 int key = detectionResults.getDetectedItems().keyAt(i);
 
-                                Log.e("DetectedFaceId1Loop", "Test==" + detectionResults.getDetectedItems().get(key).getId());
-                                Log.e("DetectedFaceId1", "Test==" + face.getId());
 
                                 if (detectionResults.getDetectedItems().get(key) != null &&
                                         detectionResults.getDetectedItems().get(key).getId() == face.getId()) {
                                     Face mFace = detectionResults.getDetectedItems().get(key);
 
-                                    Log.e("Left Values", "" + mFace.getIsLeftEyeOpenProbability());
-                                    Log.e("Right Values", "" + mFace.getIsRightEyeOpenProbability());
+
                                     float left = mFace.getIsLeftEyeOpenProbability();
                                     float right = mFace.getIsRightEyeOpenProbability();
                                     if ((left == Face.UNCOMPUTED_PROBABILITY) ||
@@ -566,7 +552,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
                                             if ((left > OPEN_THRESHOLD) && (right > OPEN_THRESHOLD)) {
                                                 // Both eyes are initially open
                                                 state = 1;
-                                                Log.e("DETECTION_LOG", "Both Eyes open");
 
                                             }
                                             break;
@@ -575,14 +560,12 @@ public final class FaceTrackerActivity extends AppCompatActivity {
                                             if ((left < CLOSE_THRESHOLD) && (right < CLOSE_THRESHOLD)) {
                                                 // Both eyes become closed
                                                 state = 2;
-                                                Log.e("DETECTION_LOG", "Both Eyes close");
                                             }
                                             break;
 
                                         case 2:
                                             if ((left > OPEN_THRESHOLD) && (right > OPEN_THRESHOLD)) {
                                                 // Both eyes are open again
-                                                Log.e("DETECTION_LOG", "Both Eyes blinked");
                                                 mPreview.takeImage();
                                                 state = 0;
                                                 inCircle = false;

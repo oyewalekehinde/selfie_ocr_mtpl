@@ -1,6 +1,5 @@
 package com.app.flutter.mtpl.selfie_ocr_mtpl;
 
-import android.util.Log;
 
 public class Exif {
     private static final String TAG = "CameraExif";
@@ -36,7 +35,6 @@ public class Exif {
             // Get the length and check if it is reasonable.
             length = pack(jpeg, offset, 2, false);
             if (length < 2 || offset + length > jpeg.length) {
-                Log.e(TAG, "Invalid length");
                 return 0;
             }
 
@@ -59,7 +57,6 @@ public class Exif {
             // Identify the byte order.
             int tag = pack(jpeg, offset, 4, false);
             if (tag != 0x49492A00 && tag != 0x4D4D002A) {
-                Log.e(TAG, "Invalid byte order");
                 return 0;
             }
             boolean littleEndian = (tag == 0x49492A00);
@@ -67,7 +64,6 @@ public class Exif {
             // Get the offset and check if it is reasonable.
             int count = pack(jpeg, offset + 4, 4, littleEndian) + 2;
             if (count < 10 || count > length) {
-                Log.e(TAG, "Invalid offset");
                 return 0;
             }
             offset += count;
@@ -91,7 +87,6 @@ public class Exif {
                         case 8:
                             return 270;
                     }
-                    Log.i(TAG, "Unsupported orientation");
                     return 0;
                 }
                 offset += 12;
@@ -99,7 +94,6 @@ public class Exif {
             }
         }
 
-        Log.i(TAG, "Orientation not found");
         return 0;
     }
 

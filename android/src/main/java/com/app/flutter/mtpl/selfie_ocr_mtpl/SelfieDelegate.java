@@ -1,7 +1,6 @@
 package com.app.flutter.mtpl.selfie_ocr_mtpl;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;

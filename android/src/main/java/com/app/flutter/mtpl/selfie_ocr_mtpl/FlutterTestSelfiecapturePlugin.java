@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.SparseArray;
 
 import com.google.android.gms.vision.Detector;
@@ -77,7 +76,6 @@ public class FlutterTestSelfiecapturePlugin implements MethodCallHandler {
     }
 
     public void extractDataFromImage(String imagePath,String destFaceImagePath,int xOffset,int yOffset){
-        Log.e("ImagePath",imagePath);
         List<String> items = new ArrayList<String>();
         String faceImagePath = "";
         Map<String,Object> resultOfOCR = new HashMap();
@@ -92,7 +90,6 @@ public class FlutterTestSelfiecapturePlugin implements MethodCallHandler {
             if(blocks!=null)
             {
                 for(int i=0;i<blocks.size();i++){
-                    Log.e("BlockVal",blocks.valueAt(i).getValue());
                     items.add(blocks.valueAt(i).getValue());
                 }
             }
