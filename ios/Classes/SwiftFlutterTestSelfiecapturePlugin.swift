@@ -22,24 +22,24 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
         else if (call.method == "ocrFromDocImage"){
             var tmpImagePath = ""
             var tmpFaceImagePath = ""
-            var tmpXoffSet = ""
-            var tmpYoffSet = ""
+            var tmpXoffSet = 0
+            var tmpYoffSet = 0
             guard let args = call.arguments else {
                 return
             }
             if let myArgs = args as? [String: Any],
                 let tmp_ImagePath = myArgs["imagePath"] as? String,
                 let tmp_FaceImagePath = myArgs["destFaceImagePath"] as? String,
-                let tmp_XoffSet = myArgs["xOffset"] as? String,
-                let tmp_YoffSet = myArgs["yOffset"] as? String{
-               
+                let tmp_XoffSet = myArgs["xOffset"] as? Int,
+                let tmp_YoffSet = myArgs["yOffset"] as? Int{
+
                 tmpImagePath = tmp_ImagePath
                 tmpFaceImagePath = tmp_FaceImagePath
                 tmpXoffSet = tmp_XoffSet
                 tmpYoffSet = tmp_YoffSet
             }
 
-            self.detectTextAndFace(strImagePath: tmpImagePath, destFaceImagePath: tmpFaceImagePath, xOffset: Int(tmpXoffSet)!, yOffset: Int(tmpYoffSet)!)
+            self.detectTextAndFace(strImagePath: tmpImagePath, destFaceImagePath: tmpFaceImagePath, xOffset: tmpXoffSet, yOffset: tmpYoffSet)
         }
         else if call.method == "detectLiveliness" {
             resultDismiss = result
@@ -60,6 +60,7 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
     }
     
     public func detectLiveness(captureMessage: String, blinkMessage: String){
+        
         if let viewController = UIApplication.shared.keyWindow?.rootViewController as? FlutterViewController{
             let storyboardName = "MainLive"
             let storyboardBundle = Bundle.init(for: type(of: self))
@@ -84,26 +85,29 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
     
     public func detectTextAndFace(strImagePath: String, destFaceImagePath: String, xOffset: Int, yOffset: Int){
         
+        
         var textDetector = GMVDetector()
         var faceDetector = GMVDetector()
         
         textDetector = GMVDetector.init(ofType: GMVDetectorTypeText, options: nil)!
         var image = UIImage()
-        
-        var url = URL(string: strImagePath)
+        var arr_image = [String]()
 
-        if url == nil{
-            url = URL.init(fileURLWithPath: strImagePath)
-        }
+//        var url = URL(string: strImagePath)
+//
+//        if url == nil{
+           let url = URL.init(fileURLWithPath: strImagePath)
+//        }
 
         DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            let data = try? Data(contentsOf: url)
             DispatchQueue.main.async {
                 image = UIImage(data: data!)!
                 let arr : [GMVTextBlockFeature] = textDetector.features(in: image, options: nil)! as! [GMVTextBlockFeature]
                 
                 for i in 0..<arr.count{
                     print(arr[i].value!)
+                    arr_image.append(arr[i].value!)
                 }
                 
                 faceDetector = GMVDetector.init(ofType: GMVDetectorTypeFace, options: nil)!
@@ -116,10 +120,10 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
                     let xRectImage = Int(arrFace[i].bounds.origin.x) - xOffset
                     let yRectImage = Int(arrFace[i].bounds.origin.y) - xOffset
                     let widthRectImage = Int(arrFace[i].bounds.size.width) + yOffset
-                    let heightRectImage = Int(arrFace[i].bounds.size.height) - yOffset
+                    let heightRectImage = Int(arrFace[i].bounds.size.height) + yOffset
                     let img_rect = CGRect.init(x: xRectImage, y: yRectImage, width: widthRectImage, height: heightRectImage)
                     let img = self.cropImage(image: image, toRect: img_rect)
-                    self.saveImage(image: img, tmp_path: destFaceImagePath, items: arr)
+                    self.saveImage(image: img, tmp_path: destFaceImagePath, items: arr_image)
                 }
             }
         }
@@ -131,11 +135,11 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
         return croppedImage
     }
     
-    func saveImage(image: UIImage, tmp_path: String, items : [GMVTextBlockFeature]) -> [String: AnyObject] {
+    func saveImage(image: UIImage, tmp_path: String, items : [String]) -> [String: AnyObject] {
         self.clearTempFolder()
         var resultOfOCR = [String: AnyObject]()
         var path = tmp_path
-        var rotatedimage = image//.rotate(radians: .pi/2)
+        let rotatedimage = image//.rotate(radians: .pi/2)
         
         guard let data = UIImageJPEGRepresentation(rotatedimage, 1) ?? UIImagePNGRepresentation(rotatedimage) else {
             return (resultOfOCR)
@@ -146,12 +150,10 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
                 return (resultOfOCR)
             }
             path = directory
+            path = "\(path)/faceImage.jpeg"
         }
-        
+
         do {
-            if path == ""{
-                path = "\(path)/faceImage.jpeg"
-            }
             try data.write(to: URL.init(fileURLWithPath: path))
             print("")
             print(path)
