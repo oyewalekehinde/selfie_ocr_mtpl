@@ -6,6 +6,7 @@ let navBar = UINavigationController.init()
 var receivedPath = String()
 
 var resultDismiss : FlutterResult!
+var resultScanDismiss : FlutterResult!
 
 public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, DismissProtocol {
 
@@ -20,6 +21,8 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
             result("iOS " + UIDevice.current.systemVersion)
         }
         else if (call.method == "ocrFromDocImage"){
+            resultScanDismiss = result
+            
             var tmpImagePath = ""
             var tmpFaceImagePath = ""
             var tmpXoffSet = 0
@@ -145,6 +148,10 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
             return (resultOfOCR)
         }
 
+//        guard let data = rotatedimage.jpegData(compressionQuality: 1) ?? rotatedimage.pngData() else {
+//            return (resultOfOCR)
+//        }
+
         if path == ""{
             guard let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else {
                 return (resultOfOCR)
@@ -159,9 +166,16 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
             print(path)
             resultOfOCR["ExtractedData"] = items as AnyObject
             resultOfOCR["FaceImagePath"] = path as AnyObject
+            if resultScanDismiss != nil{
+                resultScanDismiss(resultOfOCR)
+            }else{
+                resultScanDismiss(resultOfOCR)
+            }
             return (resultOfOCR)
         } catch {
             print(error.localizedDescription)
+            resultScanDismiss(resultOfOCR)
+
             return (resultOfOCR)
         }
     }
