@@ -1,4 +1,4 @@
-## 0.0.6
+## 0.0.8
 OCR Functionality Added For Document
 Face Croping done from Document Image
 
