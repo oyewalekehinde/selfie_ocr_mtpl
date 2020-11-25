@@ -463,10 +463,19 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         } else {
             mFileTemp = new File(getFilesDir(), TEMP_PHOTO_FILE_NAME);
         }
+        int file_size = 0;
+        if(mFileTemp!=null) {
+            file_size = Integer.parseInt(String.valueOf(mFileTemp.length() / 1024000));
+        }
         OutputStream os;
         try {
             os = new FileOutputStream(mFileTemp);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+            if(file_size >= 5) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, os);
+            } else {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+            }
+
             os.flush();
             os.close();
             return mFileTemp;

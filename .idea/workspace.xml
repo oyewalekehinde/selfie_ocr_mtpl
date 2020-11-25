@@ -10,11 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="870d7674-bd3b-4e53-b15c-604e73e44d97" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FaceTrackerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/app/flutter/mtpl/selfie_ocr_mtpl/FaceTrackerActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,12 +32,17 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="29d5d0590104" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1bDHhZvFO1dbU1XmlGS5xfiwSAy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
@@ -45,18 +59,6 @@
       <recent name="D:\flutterpluginworkspace\flutter_test_selfiecapture\android\src\main\res" />
       <recent name="D:\flutterpluginworkspace\flutter_test_selfiecapture\android\src\main\java\com\app\flutter\mtpl\flutter_test_selfiecapture" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -90,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588402955790</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Upload 0.0.8 on pub">
+      <created>1588752293464</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588752293464</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,6 +119,29 @@
     <MESSAGE value="- Log removed&#10;- Uploaded 0.0.5 to pub.dev" />
     <MESSAGE value="- changes" />
     <MESSAGE value="- Upload 0.0.7 on pub" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Upload 0.0.7 on pub" />
+    <MESSAGE value="- Upload 0.0.8 on pub" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Upload 0.0.8 on pub" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1323" height="357" key="GridCell.Tab.0.bottom" timestamp="1606307386982">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="357" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606307386982" />
+    <state width="1323" height="357" key="GridCell.Tab.0.center" timestamp="1606307386982">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="357" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606307386982" />
+    <state width="1323" height="357" key="GridCell.Tab.0.left" timestamp="1606307386982">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="357" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606307386982" />
+    <state width="1323" height="357" key="GridCell.Tab.0.right" timestamp="1606307386982">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="357" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606307386982" />
+    <state width="341" height="71" key="javadoc.popup.new" timestamp="1606306570468">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="341" height="71" key="javadoc.popup.new/0.0.1366.728@0.0.1366.728" timestamp="1606306570468" />
   </component>
 </project>
