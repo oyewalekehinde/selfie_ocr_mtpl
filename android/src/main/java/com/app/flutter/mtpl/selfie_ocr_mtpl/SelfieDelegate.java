@@ -1,6 +1,8 @@
 package com.app.flutter.mtpl.selfie_ocr_mtpl;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
+
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -61,6 +63,7 @@ public class SelfieDelegate implements PluginRegistry.ActivityResultListener {
         return false;
     }
     private void finishWithSuccess(String imagePath) {
+        Log.e("ImagePath","==="+imagePath);
         pendingResult.success(imagePath);
         clearMethodCallAndResult();
     }

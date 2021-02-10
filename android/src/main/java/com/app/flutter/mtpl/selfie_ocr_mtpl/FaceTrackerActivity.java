@@ -32,6 +32,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
@@ -79,7 +80,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
     private static final int RC_HANDLE_CAMERA_PERM = 2;
     private ImageView imgOverlay;
     private ImageView imgOverlayNew;
-
+    TransparentCircle tcFaceDetectionOverlay;
     int heightDiff = 0;
     int widthDiff = 0;
 
@@ -125,7 +126,8 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
         mGraphicOverlay = (GraphicOverlay) findViewById(R.id.faceOverlay);
         imgOverlay = (ImageView) findViewById(R.id.imgOverlay);
-        imgOverlayNew = (ImageView) findViewById(R.id.imgNew);
+        imgOverlayNew = (ImageView) findViewById(R.id. imgNew);
+        tcFaceDetectionOverlay = (TransparentCircle) findViewById(R.id.tcFaceDetectionOverlay);
         imgClose = (ImageView) findViewById(R.id.imgClose);
         txtMsg = (TextView) findViewById(R.id.txtMsg);
         txtBlinkEye = (TextView) findViewById(R.id.txtBlinkEye);
@@ -445,6 +447,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
     }
 
     public void setImageViewPicture(Bitmap bmpPicture) {
+        if (persistImage(bmpPicture) == null) return;
         File f1 = new File(persistImage(bmpPicture).getPath());
         Intent intent = new Intent();
         intent.putExtra("filePath",f1.toString());
@@ -511,7 +514,8 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         GraphicFaceTracker(GraphicOverlay overlay) {
             mOverlay = overlay;
             mFaceGraphic = new FaceGraphic(overlay);
-            mFaceGraphic.setImageViewCircle(imgOverlayNew);
+//            mFaceGraphic.setImageViewCircle(imgOverlayNew);
+            mFaceGraphic.setTransplantCircle(tcFaceDetectionOverlay);
         }
 
         /**
@@ -528,7 +532,11 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         @Override
         public void onUpdate(final FaceDetector.Detections<Face> detectionResults, final Face face) {
             mOverlay.add(mFaceGraphic);
-            mFaceGraphic.updateFace(FaceTrackerActivity.this, face, imgOverlay.getX(), imgOverlay.getY(), new updateEyeBlink() {
+            float width = tcFaceDetectionOverlay.rectF.right - tcFaceDetectionOverlay.rectF.left;
+            float height = tcFaceDetectionOverlay.rectF.bottom - tcFaceDetectionOverlay.rectF.top;
+            Log.e("DIFF_WIDTH ","=="+width);
+            Log.e("DIFF_HEIGHT  ","=="+height);
+            mFaceGraphic.updateFace(FaceTrackerActivity.this, face,tcFaceDetectionOverlay.rectF, new updateEyeBlink() {
                 @Override
                 public void inCircle(boolean inCircle) {
                     /**

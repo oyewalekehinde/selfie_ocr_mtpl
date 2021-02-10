@@ -70,6 +70,7 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
             let storyboard = UIStoryboard(name: storyboardName, bundle: storyboardBundle)
             if let vc = storyboard.instantiateViewController(withIdentifier: "TestViewController") as? TestViewController {
                 vc.captureMessageText = captureMessage
+                vc.modalPresentationStyle = .fullScreen
                 vc.blinkMessageText = blinkMessage
                 viewController.present(vc, animated: true, completion: nil)
                 vc.dismissDelegate = self

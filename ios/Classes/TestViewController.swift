@@ -35,25 +35,41 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     var dismissDelegate: DismissProtocol!
 
+    
+    let shape = CAShapeLayer()
+    var borderColor : UIColor = UIColor.red
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [self] in
                     self.backButton.frame = CGRect(x: self.view.frame.width - 50, y: 30, width: 40, height: 40)
             self.backButton.titleLabel?.font = UIFont.init(name: "GillSans", size: 20)
                     self.backButton.setTitle("X", for: .normal)
 //                    self.backButton.setImage(UIImage.init(named: "close-button.png"), for: .normal)
             self.backButton.addTarget(self, action: #selector(self.backButtonPressed(sender:)), for: .touchUpInside)
-                    self.overlayCircle.frame = CGRect(x: (self.view.frame.width/2) - ((self.view.frame.width/1.3)/2), y: (self.view.frame.height/2) - ((self.view.frame.width/1.3)/2), width: (self.view.frame.width/1.3), height: (self.view.frame.width/1.3))
-                    self.overlayCircle.layer.cornerRadius = (self.view.frame.width/1.3)/2
-                    self.overlayCircle.layer.borderWidth = 3
-                    self.overlayCircle.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                    
-                    
+            self.overlayCircle.frame = CGRect(x: (self.view.frame.width/2) - ((self.view.frame.width/1.3)/2), y: (self.view.frame.height/2) - ((self.view.frame.width)/2), width: (self.view.frame.width/1.3), height: (self.view.frame.width))
+//            self.overlayCircle.layer.cornerRadius = self.overlayCircle.frame.height/2
+            
+            let gradient = CAGradientLayer()
+            let size = CGSize(width: (self.view.frame.width/1.3), height: (self.view.frame.width))
+            let rect = CGRect(origin: .zero, size: size)
+            gradient.frame =  CGRect(origin: CGPoint.zero, size: size)
+            gradient.colors = [UIColor.blue.cgColor, UIColor.green.cgColor]
+//            let shape = CAShapeLayer()
+            shape.lineWidth = 5
+            shape.backgroundColor = UIColor.red.cgColor
+            shape.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: (self.view.frame.width/1.3), height: (self.view.frame.width))).cgPath
+            shape.strokeColor = borderColor.cgColor
+            shape.fillColor = UIColor.clear.cgColor
+            gradient.mask = shape
+            self.overlayCircle.layer.addSublayer(shape)
+            
                     self.labelStatus.frame = CGRect(x: 30, y:  70, width: self.view.frame.width - 60, height: 60)
-                    self.lblEyeBlink.frame = CGRect(x: 30, y:  135, width: self.view.frame.width - 60, height: 30)
+                    self.lblEyeBlink.frame = CGRect(x: 30, y:  125, width: self.view.frame.width - 60, height: 30)
                     
             self.lblEyeBlink.text = self.blinkMessageText //"Blink your eyes"
-                self.labelStatus.text = self.captureMessageText//"Your selfie will be captured. Hold steady and fill your face in the circle."
+                self.labelStatus.text = self.captureMessageText
+            //"Your selfie will be captured. Hold steady and fill your face in the circle."
             //        self.labelStatus.font = UIFont.init(name: "Helvetica-BoldOblique", size: 17.0)
             //        self.lblEyeBlink.font = UIFont.init(name: "Helvetica-BoldOblique", size: 18.0)
                     
@@ -85,6 +101,9 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                     self.getCameraFrames()
         }
        
+//        let viewww = self.createOverlay(frame: self.view.frame, xOffset: 50, yOffset: 50, radius: self.view.frame.width/2)
+
+//        view.addSubview(viewww)
 
     }
     @objc func backButtonPressed(sender : UIButton){
@@ -208,11 +227,24 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         self.view.layer.addSublayer(self.previewLayer)
         self.previewLayer.frame = self.view.frame
   //      self.previewLayer.addSublayer(self.bgImageView.layer)
-        self.previewLayer.addSublayer(self.labelStatus.layer)
-        self.previewLayer.addSublayer(self.lblEyeBlink.layer)
-        self.previewLayer.addSublayer(self.backButton.layer)
         
+//        self.previewLayer.addSublayer(self.labelStatus.layer)
+//        self.previewLayer.addSublayer(self.lblEyeBlink.layer)
+//        self.previewLayer.addSublayer(self.backButton.layer)
+        
+    
+        
+        let ovalFrame : CGRect = CGRect(x: (self.view.frame.width/2) - ((self.view.frame.width/1.3)/2), y: (self.view.frame.height/2) - (self.view.frame.width/2), width: (self.view.frame.width/1.3), height: (self.view.frame.width))
+        let customeView = createOverlay(frame: self.view.frame, xOffset: (self.view.frame.width/2), yOffset: (self.view.frame.height/2.15), radius: (self.view.frame.width/1.3)/2, ovalFrame: ovalFrame)
+        self.view.addSubview(customeView)
+        
+        
+        customeView.layer.addSublayer(self.labelStatus.layer)
+        customeView.layer.addSublayer(self.lblEyeBlink.layer)
+        customeView.layer.addSublayer(self.backButton.layer)
+
         self.view.addSubview(self.backButton)
+
     }
     
     private func getCameraFrames(){
@@ -264,6 +296,7 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                     
                     self.lblEyeBlink.isHidden = false
                     
+                    self.shape.strokeColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor
                     self.overlayCircle.layer.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
                     
                     let image = GMVUtility.sampleBufferTo32RGBA(sampleBuffer)
@@ -292,6 +325,7 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 }
                 
             }else{
+                shape.strokeColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor
                 overlayCircle.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
                 self.lblEyeBlink.isHidden = true
              
@@ -299,6 +333,35 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             
             return newDrawings
         })
+    }
+    
+    func createOverlay(frame: CGRect,
+                       xOffset: CGFloat,
+                       yOffset: CGFloat,
+                       radius: CGFloat, ovalFrame: CGRect) -> UIView {
+        // Step 1
+        let overlayView = UIView(frame: frame)
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        // Step 2
+        let path = CGMutablePath()
+        path.addEllipse(in: ovalFrame)
+//        path.addArc(center: CGPoint(x: xOffset, y: yOffset),
+//                    radius: radius,
+//                    startAngle: 0.0,
+//                    endAngle: 2.0 * .pi,
+//                    clockwise: false)
+        path.addRect(CGRect(origin: .zero, size: overlayView.frame.size))
+        // Step 3
+        let maskLayer = CAShapeLayer()
+        maskLayer.backgroundColor = UIColor.black.cgColor
+        maskLayer.path = path
+        // For Swift 4.0
+        maskLayer.fillRule = kCAFillRuleEvenOdd
+        // For Swift 4.2
+        // Step 4
+        overlayView.layer.mask = maskLayer
+        overlayView.clipsToBounds = true
+        return overlayView
     }
     
 }
@@ -336,5 +399,24 @@ extension UIView {
         UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.alpha = 0.0
         }, completion: completion)
+    }
+}
+
+class CustomOval: UIView {
+    override func draw(_ rect: CGRect)
+    {
+        let gradient = CAGradientLayer()
+        let size = CGSize(width: 300, height: 200)
+        let rect = CGRect(origin: .zero, size: size)
+        gradient.frame =  CGRect(origin: CGPoint.zero, size: size)
+        gradient.colors = [UIColor.blue.cgColor, UIColor.green.cgColor]
+        let shape = CAShapeLayer()
+        shape.lineWidth = 5
+        shape.backgroundColor = UIColor.red.cgColor
+        shape.path = UIBezierPath(ovalIn: CGRect(x: self.center.x - 120, y: self.center.y - 160, width: 240, height: 320)).cgPath
+        shape.strokeColor = UIColor.white.cgColor
+        shape.fillColor = UIColor.yellow.cgColor
+        gradient.mask = shape
+        self.layer.addSublayer(shape)
     }
 }

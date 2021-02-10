@@ -12,7 +12,8 @@
   <com.app.flutter.mtpl.selfie_ocr_mtpl.ui.camera.CameraSourcePreview
       android:id="@+id/preview"
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      >
 
     <com.app.flutter.mtpl.selfie_ocr_mtpl.ui.camera.GraphicOverlay
         android:id="@+id/faceOverlay"
@@ -25,14 +26,14 @@
   <ImageView
       android:id="@+id/imgOverlay"
       android:layout_width="255dp"
-      android:layout_height="255dp"
+      android:layout_height="400dp"
       android:layout_centerInParent="true"
       android:visibility="visible"
       android:src="@drawable/rounded_border_white"/>
   <ImageView
       android:id="@+id/imgNew"
       android:layout_width="255dp"
-      android:layout_height="255dp"
+      android:layout_height="400dp"
       android:layout_centerInParent="true"
       android:visibility="invisible"
       android:src="@drawable/rounded_green"/>
