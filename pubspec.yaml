@@ -3,7 +3,7 @@ description: A new Flutter plugin which detect liveness and capture the selfie
 version: 1.0.3
 author: Jaimin <androidlead@moweb.com>
 homepage: http://www.moweb.com
-publish_to: 'none'
+
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
