@@ -15,17 +15,22 @@
  */
 package com.app.flutter.mtpl.selfie_ocr_mtpl.ui.camera;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
+
+import androidx.core.app.ActivityCompat;
 
 import com.app.flutter.mtpl.selfie_ocr_mtpl.Exif;
 import com.app.flutter.mtpl.selfie_ocr_mtpl.FaceTrackerActivity;
@@ -92,9 +97,19 @@ public class CameraSourcePreview extends ViewGroup {
     }
 
     private void startIfReady() throws IOException {
-     //   Toast.makeText(mContext, "StartIfReady", Toast.LENGTH_SHORT).show();
+        //   Toast.makeText(mContext, "StartIfReady", Toast.LENGTH_SHORT).show();
         if (mStartRequested && mSurfaceAvailable) {
-        //    Toast.makeText(mContext, "SurfaceAvailbale", Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(mContext, "SurfaceAvailbale", Toast.LENGTH_SHORT).show();
+            if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             mCameraSource.start(mSurfaceView.getHolder());
             if (mOverlay != null) {
             //    Toast.makeText(mContext, "Overlay Not Null", Toast.LENGTH_SHORT).show();
@@ -211,6 +226,7 @@ public class CameraSourcePreview extends ViewGroup {
 
             int orientation = Exif.getOrientation(data);
             Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+
             switch (orientation) {
                 case 90:
                     bitmap = rotateImage(bitmap, 90);
@@ -234,6 +250,7 @@ public class CameraSourcePreview extends ViewGroup {
 
 
             if (mContext instanceof FaceTrackerActivity) {
+                Log.e("FilePath","FilePath---");
                 FaceTrackerActivity main = (FaceTrackerActivity) mContext;
                 main.setImageViewPicture(bitmap);
             }

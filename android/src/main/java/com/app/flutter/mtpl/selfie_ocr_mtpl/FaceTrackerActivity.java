@@ -462,7 +462,8 @@ public final class FaceTrackerActivity extends AppCompatActivity {
     private File persistImage(Bitmap bitmap) {
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
-            mFileTemp = new File(Environment.getExternalStorageDirectory(), TEMP_PHOTO_FILE_NAME);
+//            mFileTemp = new File(Environment.getExternalStorageDirectory(), TEMP_PHOTO_FILE_NAME);
+            mFileTemp = new File(getFilesDir(), TEMP_PHOTO_FILE_NAME);
         } else {
             mFileTemp = new File(getFilesDir(), TEMP_PHOTO_FILE_NAME);
         }

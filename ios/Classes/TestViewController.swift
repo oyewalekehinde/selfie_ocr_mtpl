@@ -172,7 +172,7 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         var rotatedimage = image.rotate(radians: .pi/2)
         
 //        let data = UIImageJPEGRepresentation(rotatedimage, 1)
-        guard let data = UIImageJPEGRepresentation(rotatedimage, 1) ?? UIImagePNGRepresentation(rotatedimage) else {
+        guard let data = rotatedimage.jpegData(compressionQuality: 1) ?? rotatedimage.pngData() else {
             return (false, "")
         }
 
@@ -356,7 +356,7 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         maskLayer.backgroundColor = UIColor.black.cgColor
         maskLayer.path = path
         // For Swift 4.0
-        maskLayer.fillRule = kCAFillRuleEvenOdd
+        maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         // For Swift 4.2
         // Step 4
         overlayView.layer.mask = maskLayer

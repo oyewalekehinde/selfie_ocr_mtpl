@@ -8,10 +8,11 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="870d7674-bd3b-4e53-b15c-604e73e44d97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-    </list>
+    <list default="true" id="870d7674-bd3b-4e53-b15c-604e73e44d97" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +21,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="29d5d0590104" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -34,6 +35,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -48,6 +50,7 @@
       <recent name="D:\flutterpluginworkspace\flutter_test_selfiecapture\android\src\main\java\com\app\flutter\mtpl\flutter_test_selfiecapture" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -90,18 +93,20 @@
     <option name="localTasksCounter" value="5" />
     <servers />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Log removed&#10;- Uploaded 0.0.5 to pub.dev" />
@@ -111,25 +116,29 @@
     <option name="LAST_COMMIT_MESSAGE" value="- Upload 0.0.8 on pub" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1323" height="357" key="GridCell.Tab.0.bottom" timestamp="1606307386982">
+    <state width="1323" height="338" key="GridCell.Tab.0.bottom" timestamp="1626851843632">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="357" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606307386982" />
-    <state width="1323" height="357" key="GridCell.Tab.0.center" timestamp="1606307386982">
+    <state width="1323" height="338" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1626851843632" />
+    <state width="1323" height="338" key="GridCell.Tab.0.center" timestamp="1626851843632">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="357" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606307386982" />
-    <state width="1323" height="357" key="GridCell.Tab.0.left" timestamp="1606307386982">
+    <state width="1323" height="338" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1626851843632" />
+    <state width="1323" height="338" key="GridCell.Tab.0.left" timestamp="1626851843631">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="357" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606307386982" />
-    <state width="1323" height="357" key="GridCell.Tab.0.right" timestamp="1606307386982">
+    <state width="1323" height="338" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1626851843631" />
+    <state width="1323" height="338" key="GridCell.Tab.0.right" timestamp="1626851843632">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="357" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606307386982" />
-    <state width="341" height="71" key="javadoc.popup.new" timestamp="1606306570468">
+    <state width="1323" height="338" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1626851843632" />
+    <state x="184" y="9" key="SettingsEditor" timestamp="1626848744879">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="341" height="71" key="javadoc.popup.new/0.0.1366.728@0.0.1366.728" timestamp="1606306570468" />
+    <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1626848744879" />
+    <state width="341" height="71" key="javadoc.popup.new" timestamp="1626861100859">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="341" height="71" key="javadoc.popup.new/0.0.1366.728@0.0.1366.728" timestamp="1626861100859" />
   </component>
 </project>

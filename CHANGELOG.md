@@ -1,5 +1,3 @@
-## 0.0.9
-OCR Functionality Added For Document
-Face Croping done from Document Image
-
+## 1.0.3
+- Fix selfie capture Android 11 issue
 * TODO: Describe initial release.

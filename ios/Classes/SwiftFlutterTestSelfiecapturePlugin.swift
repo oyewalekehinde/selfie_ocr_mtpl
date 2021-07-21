@@ -145,7 +145,7 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
         var path = tmp_path
         let rotatedimage = image//.rotate(radians: .pi/2)
         
-        guard let data = UIImageJPEGRepresentation(rotatedimage, 1) ?? UIImagePNGRepresentation(rotatedimage) else {
+        guard let data = rotatedimage.jpegData(compressionQuality: 1) ?? rotatedimage.pngData() else {
             return (resultOfOCR)
         }
 
