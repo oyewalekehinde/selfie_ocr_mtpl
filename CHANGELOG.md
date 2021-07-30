@@ -1,3 +1,3 @@
-## 1.0.3
-- Fix selfie capture Android 11 issue
+## 1.0.4
+- iOS POD update regarding webview
 * TODO: Describe initial release.

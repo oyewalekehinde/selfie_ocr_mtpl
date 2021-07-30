@@ -12,7 +12,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="870d7674-bd3b-4e53-b15c-604e73e44d97" name="Default Changelist" comment="" />
+    <list default="true" id="870d7674-bd3b-4e53-b15c-604e73e44d97" name="Default Changelist" comment="- Upload 0.0.8 on pub">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +25,9 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="master" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -116,29 +122,33 @@
     <option name="LAST_COMMIT_MESSAGE" value="- Upload 0.0.8 on pub" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1323" height="338" key="GridCell.Tab.0.bottom" timestamp="1626851843632">
+    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1627629343909">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="338" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1626851843632" />
-    <state width="1323" height="338" key="GridCell.Tab.0.center" timestamp="1626851843632">
+    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1627629343909" />
+    <state width="1323" height="338" key="GridCell.Tab.0.bottom" timestamp="1626868810772">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="338" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1626851843632" />
-    <state width="1323" height="338" key="GridCell.Tab.0.left" timestamp="1626851843631">
+    <state width="1323" height="338" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1626868810772" />
+    <state width="1323" height="338" key="GridCell.Tab.0.center" timestamp="1626868810772">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="338" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1626851843631" />
-    <state width="1323" height="338" key="GridCell.Tab.0.right" timestamp="1626851843632">
+    <state width="1323" height="338" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1626868810772" />
+    <state width="1323" height="338" key="GridCell.Tab.0.left" timestamp="1626868810772">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="338" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1626851843632" />
+    <state width="1323" height="338" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1626868810772" />
+    <state width="1323" height="338" key="GridCell.Tab.0.right" timestamp="1626868810772">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="338" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1626868810772" />
     <state x="184" y="9" key="SettingsEditor" timestamp="1626848744879">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1626848744879" />
-    <state width="341" height="71" key="javadoc.popup.new" timestamp="1626861100859">
+    <state width="341" height="71" key="javadoc.popup.new" timestamp="1627627341827">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="341" height="71" key="javadoc.popup.new/0.0.1366.728@0.0.1366.728" timestamp="1626861100859" />
+    <state width="341" height="71" key="javadoc.popup.new/0.0.1366.728@0.0.1366.728" timestamp="1627627341827" />
   </component>
 </project>
