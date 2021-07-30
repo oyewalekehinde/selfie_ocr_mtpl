@@ -2,8 +2,14 @@
 import UIKit
 import AVFoundation
 import Vision
-import GoogleMobileVision
-import GoogleMVDataOutput
+import MLKitVision
+import MLKitCommon
+import MLCompute
+import MLKitFaceDetection
+import GoogleUtilities
+import CoreML
+//**import GoogleMobileVision
+//**import GoogleMVDataOutput
 
 
 protocol DismissProtocol{
@@ -17,9 +23,12 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     private let captureSession = AVCaptureSession()
     private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
     private let videoDataOutput = AVCaptureVideoDataOutput()
-    var dataOutput : GMVMultiDataOutput = GMVMultiDataOutput()
+//    var dataOutput : GMVMultiDataOutput = GMVMultiDataOutput()
     private var drawings: [CAShapeLayer] = []
-    var faceDetector : GMVDetector = GMVDetector()
+    
+//**    var faceDetector : GMVDetector = GMVDetector()
+    var faceDetector = FaceDetector.faceDetector()
+
     var lastKnownDeviceOrientation : UIDeviceOrientation?
     var videoDataOutputQueue : DispatchQueue?
     var state : Int = 0
@@ -88,6 +97,7 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                     self.lblEyeBlink.textAlignment = .center
                     
                     self.lblEyeBlink.isHidden = true
+            /* **
                     let options = [
                                GMVDetectorFaceTrackingEnabled : true,
                                GMVDetectorFaceLandmarkType: "\(GMVDetectorFaceLandmark.all.rawValue)",
@@ -95,6 +105,17 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                                ] as [AnyHashable : Any]
                            
                     self.faceDetector  = GMVDetector.init(ofType: GMVDetectorTypeFace, options: options)!
+            */
+            
+            let options = FaceDetectorOptions()
+            options.performanceMode = .accurate
+            options.landmarkMode = .all
+            options.classificationMode = .all
+            self.faceDetector  = FaceDetector.faceDetector(options: options)
+
+            
+            
+            
                     self.captureSession.startRunning()
                     self.addCameraInput()
                     self.showCameraFeed()
@@ -128,45 +149,57 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         }
         self.detectFace(in: frame, sampleBuffer: sampleBuffer)
     }
-    
-    func checkEyeBlinkStatus(_ face : GMVFaceFeature,sampleBuffer : CMSampleBuffer){
-        let left = face.leftEyeOpenProbability
-        let right = face.rightEyeOpenProbability
-        switch state {
-        case 0:
-            
-            if left > Open_threshold && right > Open_threshold{
-                state = 1
-            }
-            
-            break
-        case 1:
-            if left < Close_threshold && right < Close_threshold{
-                state = 2
-            }
-            break
-        case 2:
-            if left > Open_threshold && right > Open_threshold{
-             
-                mainBuffer = sampleBuffer
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.captureImageAfterBlink(sampleBuffer: self.mainBuffer!)
-                }
-            }
-            break
-        default:
-            print("Default case")
-        }
-    }
-    func captureImageAfterBlink(sampleBuffer : CMSampleBuffer){
-        if let image = GMVUtility.sampleBufferTo32RGBA(sampleBuffer){
-            let success = self.saveImage(image: image)
-//            DispatchQueue.main.async {
-            dismissDelegate.sendData(filePath: success.1)
-                self.dismiss(animated: true, completion: nil)
+    //Ashit Open 
+//    func checkEyeBlinkStatus(_ face : GMVFaceFeature,sampleBuffer : CMSampleBuffer){
+//        let left = face.leftEyeOpenProbability
+//        let right = face.rightEyeOpenProbability
+//        switch state {
+//        case 0:
+//
+//            if left > Open_threshold && right > Open_threshold{
+//                state = 1
 //            }
-        }
+//
+//            break
+//        case 1:
+//            if left < Close_threshold && right < Close_threshold{
+//                state = 2
+//            }
+//            break
+//        case 2:
+//            if left > Open_threshold && right > Open_threshold{
+//
+//                mainBuffer = sampleBuffer
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                    self.captureImageAfterBlink(sampleBuffer: self.mainBuffer!)
+//                }
+//            }
+//            break
+//        default:
+//            print("Default case")
+//        }
+//    }
+    func captureImageAfterBlink(sampleBuffer : CMSampleBuffer){
+        let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        let ciimage = CIImage(cvPixelBuffer: imageBuffer)
+        let image = self.convert(cmage: ciimage)
+        let success = self.saveImage(image: image)
+        dismissDelegate.sendData(filePath: success.1)
+        self.dismiss(animated: true, completion: nil)
+        
+        //        if let image = GMVUtility.sampleBufferTo32RGBA(sampleBuffer){
+        //            let success = self.saveImage(image: image)
+        //            dismissDelegate.sendData(filePath: success.1)
+        //                self.dismiss(animated: true, completion: nil)
+        //        }
     }
+    func convert(cmage: CIImage) -> UIImage {
+         let context = CIContext(options: nil)
+         let cgImage = context.createCGImage(cmage, from: cmage.extent)!
+         let image = UIImage(cgImage: cgImage)
+         return image
+    }
+    
     func saveImage(image: UIImage) -> (Bool, String) {
         self.clearTempFolder()
         var rotatedimage = image.rotate(radians: .pi/2)
@@ -299,29 +332,77 @@ class TestViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                     self.shape.strokeColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor
                     self.overlayCircle.layer.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
                     
-                    let image = GMVUtility.sampleBufferTo32RGBA(sampleBuffer)
-                    let devicePosition: AVCaptureDevice.Position = .front
-                    
-                    let deviceOrientation = UIDevice.current.orientation
-                    let orientation = GMVUtility.imageOrientation(from: deviceOrientation, with: devicePosition, defaultDeviceOrientation: UIDeviceOrientation.portrait)
-                    let options = [
-                        GMVDetectorImageOrientation: NSNumber(value: orientation.rawValue)
-                    ]
-                    //features(in: image!, options: options)
-                    let faces  = self.faceDetector.features(in: image!, options: options)
-                    
-                    if faces != nil{
-                        print("--------------------Face Count : \(String(describing: faces?.count))-------------------------")
-                        if faces!.count > 0{
+                    weak var weakSelf = self
+                    let visionImage = VisionImage.init(buffer: sampleBuffer)
+                    self.faceDetector.process(visionImage) { faces, error in
+                        guard let strongSelf = weakSelf else {
+                            print("Self is nil!")
+                            return
+                        }
+                        guard error == nil, let faces = faces, !faces.isEmpty else {
+                            // ...
+                            return
+                        }
+                        print("Faces detected")
+                        
+                        for face in faces {
+                            let frame = face.frame
+                            var left : CGFloat = 0.0
+                            var right : CGFloat = 0.0
+                            if face.hasRightEyeOpenProbability {
+                                left = face.rightEyeOpenProbability
+                            }
+                            if face.hasLeftEyeOpenProbability {
+                                right = face.leftEyeOpenProbability
+                            }
                             
-                            let faceObject = faces![0]
-                           // if !self.isEyeBlinked{
-                               self.checkEyeBlinkStatus(faceObject as! GMVFaceFeature,sampleBuffer: sampleBuffer)
-//                            }else{
+                            switch self.state {
+                            case 0:
 
-//                            }
+                                if left > self.Open_threshold && right > self.Open_threshold{
+                                    self.state = 1
+                                }
+
+                                break
+                            case 1:
+                                if left < self.Close_threshold && right < self.Close_threshold{
+                                    self.state = 2
+                                }
+                                break
+                            case 2:
+                                if left > self.Open_threshold && right > self.Open_threshold{
+
+                                    self.mainBuffer = sampleBuffer
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        self.captureImageAfterBlink(sampleBuffer: self.mainBuffer!)
+                                    }
+                                }
+                                break
+                            default:
+                                print("Default case")
+                            }
+                            
                         }
                     }
+
+                    
+//**                    let image = GMVUtility.sampleBufferTo32RGBA(sampleBuffer)
+//**                    let devicePosition: AVCaptureDevice.Position = .front
+//**                    let deviceOrientation = UIDevice.current.orientation
+//**                    let orientation = GMVUtility.imageOrientation(from: deviceOrientation, with: **devicePosition, defaultDeviceOrientation: UIDeviceOrientation.portrait)
+//**                    let options = [
+//**                        GMVDetectorImageOrientation: NSNumber(value: orientation.rawValue)
+//**                    ]
+//**                    let faces  = self.faceDetector.features(in: image!, options: options)
+  
+//**                    if faces != nil{
+//**                        print("--------------------Face Count : \(String(describing: **faces?.count))-------------------------")
+//**                        if faces!.count > 0{
+//**
+//**                            let faceObject = faces![0]
+//**                               self.checkEyeBlinkStatus(faceObject as! GMVFaceFeature,sampleBuffer: **sampleBuffer)
+//**                        }
+//**                    }
                 }
                 
             }else{

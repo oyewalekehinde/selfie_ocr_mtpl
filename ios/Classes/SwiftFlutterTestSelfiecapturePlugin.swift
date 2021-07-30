@@ -1,6 +1,6 @@
 import Flutter
 import UIKit
-import GoogleMobileVision
+//import GoogleMobileVision
 
 let navBar = UINavigationController.init()
 var receivedPath = String()
@@ -42,7 +42,7 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
                 tmpYoffSet = tmp_YoffSet
             }
 
-            self.detectTextAndFace(strImagePath: tmpImagePath, destFaceImagePath: tmpFaceImagePath, xOffset: tmpXoffSet, yOffset: tmpYoffSet)
+//            self.detectTextAndFace(strImagePath: tmpImagePath, destFaceImagePath: tmpFaceImagePath, xOffset: tmpXoffSet, yOffset: tmpYoffSet)
         }
         else if call.method == "detectLiveliness" {
             resultDismiss = result
@@ -87,51 +87,51 @@ public class SwiftFlutterTestSelfiecapturePlugin: NSObject, FlutterPlugin, Dismi
     }
     
     
-    public func detectTextAndFace(strImagePath: String, destFaceImagePath: String, xOffset: Int, yOffset: Int){
-        
-        
-        var textDetector = GMVDetector()
-        var faceDetector = GMVDetector()
-        
-        textDetector = GMVDetector.init(ofType: GMVDetectorTypeText, options: nil)!
-        var image = UIImage()
-        var arr_image = [String]()
-
-//        var url = URL(string: strImagePath)
+//    public func detectTextAndFace(strImagePath: String, destFaceImagePath: String, xOffset: Int, yOffset: Int){
 //
-//        if url == nil{
-           let url = URL.init(fileURLWithPath: strImagePath)
+//
+//        var textDetector = GMVDetector()
+//        var faceDetector = GMVDetector()
+//
+//        textDetector = GMVDetector.init(ofType: GMVDetectorTypeText, options: nil)!
+//        var image = UIImage()
+//        var arr_image = [String]()
+//
+////        var url = URL(string: strImagePath)
+////
+////        if url == nil{
+//           let url = URL.init(fileURLWithPath: strImagePath)
+////        }
+//
+//        DispatchQueue.global().async {
+//            let data = try? Data(contentsOf: url)
+//            DispatchQueue.main.async {
+//                image = UIImage(data: data!)!
+//                let arr : [GMVTextBlockFeature] = textDetector.features(in: image, options: nil)! as! [GMVTextBlockFeature]
+//
+//                for i in 0..<arr.count{
+//                    print(arr[i].value!)
+//                    arr_image.append(arr[i].value!)
+//                }
+//
+//                faceDetector = GMVDetector.init(ofType: GMVDetectorTypeFace, options: nil)!
+//                let arrFace : [GMVFaceFeature] = faceDetector.features(in: image, options: nil)! as! [GMVFaceFeature]
+//
+//                for i in 0..<arrFace.count{
+//                    // Face
+//                    let rect = arrFace[i].bounds
+//                    print(rect)
+//                    let xRectImage = Int(arrFace[i].bounds.origin.x) - xOffset
+//                    let yRectImage = Int(arrFace[i].bounds.origin.y) - xOffset
+//                    let widthRectImage = Int(arrFace[i].bounds.size.width) + yOffset
+//                    let heightRectImage = Int(arrFace[i].bounds.size.height) + yOffset
+//                    let img_rect = CGRect.init(x: xRectImage, y: yRectImage, width: widthRectImage, height: heightRectImage)
+//                    let img = self.cropImage(image: image, toRect: img_rect)
+//                    self.saveImage(image: img, tmp_path: destFaceImagePath, items: arr_image)
+//                }
+//            }
 //        }
-
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url)
-            DispatchQueue.main.async {
-                image = UIImage(data: data!)!
-                let arr : [GMVTextBlockFeature] = textDetector.features(in: image, options: nil)! as! [GMVTextBlockFeature]
-                
-                for i in 0..<arr.count{
-                    print(arr[i].value!)
-                    arr_image.append(arr[i].value!)
-                }
-                
-                faceDetector = GMVDetector.init(ofType: GMVDetectorTypeFace, options: nil)!
-                let arrFace : [GMVFaceFeature] = faceDetector.features(in: image, options: nil)! as! [GMVFaceFeature]
-                
-                for i in 0..<arrFace.count{
-                    // Face
-                    let rect = arrFace[i].bounds
-                    print(rect)
-                    let xRectImage = Int(arrFace[i].bounds.origin.x) - xOffset
-                    let yRectImage = Int(arrFace[i].bounds.origin.y) - xOffset
-                    let widthRectImage = Int(arrFace[i].bounds.size.width) + yOffset
-                    let heightRectImage = Int(arrFace[i].bounds.size.height) + yOffset
-                    let img_rect = CGRect.init(x: xRectImage, y: yRectImage, width: widthRectImage, height: heightRectImage)
-                    let img = self.cropImage(image: image, toRect: img_rect)
-                    self.saveImage(image: img, tmp_path: destFaceImagePath, items: arr_image)
-                }
-            }
-        }
-    }
+//    }
     
     func cropImage(image:UIImage, toRect rect:CGRect) -> UIImage{
         let imageRef:CGImage = image.cgImage!.cropping(to: rect)!

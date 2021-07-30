@@ -1,3 +1,3 @@
-## 1.0.3
-- Fix selfie capture Android 11 issue
+## 1.0.5
+- Change MLKitVision instead of GoogleMobileVision
 * TODO: Describe initial release.

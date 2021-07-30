@@ -16,9 +16,9 @@ A new Flutter plugin which detect liveness and capture the selfie
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
 
-  s.ios.dependency 'GoogleMobileVision/FaceDetector'
-  s.ios.dependency 'GoogleMobileVision/MVDataOutput'
-  s.ios.dependency 'GoogleMobileVision/TextDetector'
+  s.ios.dependency 'GoogleMLKit/FaceDetection'
+#  s.ios.dependency 'GoogleMobileVision/MVDataOutput'
+  s.ios.dependency 'GoogleMLKit/TextRecognition'
 
   s.ios.deployment_target = '11.1'
   s.static_framework = true
