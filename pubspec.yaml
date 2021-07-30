@@ -1,6 +1,6 @@
 name: selfie_ocr_mtpl
 description: A new Flutter plugin which detect liveness and capture the selfie
-version: 1.0.3
+version: 1.0.4
 author: Jaimin <androidlead@moweb.com>
 homepage: http://www.moweb.com
 
