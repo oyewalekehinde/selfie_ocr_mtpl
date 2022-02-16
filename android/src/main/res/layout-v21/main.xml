@@ -23,7 +23,7 @@
   <ImageView
       android:id="@+id/imgOverlay"
       android:layout_width="255dp"
-      android:layout_height="400dp"
+      android:layout_height="300dp"
       android:layout_centerInParent="true"
       android:visibility="invisible"
       android:src="@drawable/rounded_border_white"/>
@@ -31,7 +31,7 @@
   <ImageView
       android:id="@+id/imgNew"
       android:layout_width="255dp"
-      android:layout_height="400dp"
+      android:layout_height="300dp"
       android:layout_centerInParent="true"
       android:visibility="invisible"
       android:src="@drawable/rounded_green"/>
